@@ -1,43 +1,60 @@
-import React from "react";
+import axios from "axios";
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 
-const Offer = (props) => {
+const Offer = () => {
   const { id } = useParams();
-  const { offers, isLoading } = props;
-  let offerDisplayed = {};
-  let test = {};
+
+  const [offer, setOffer] = useState({});
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const results = await axios.get(
+        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+      );
+      setOffer(results.data);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
 
   return (
     <div>
-      afficher les infos de telle offre {id}
-      <div>iMAGE</div>
       {isLoading ? (
-        <div>chargement</div>
+        <div>chargement...</div>
       ) : (
-        <div>
-          {offers.forEach((offer) => {
-            if (offer._id === id) {
-              offerDisplayed = { ...offer };
-            }
-          })}
-          <div className="offer-block">
-            <div className="offer-price">{offerDisplayed.product_price}</div>
-            {offerDisplayed.product_details.map((product_detail, index) => {
-              test = { ...product_detail };
-            })}
-            <div className="offer-infos">
-              <div className="test">
-                <div className="key">{test.MARQUE}</div>
-                <div className="value"></div>
-              </div>
-              <div className="offer-attributes"></div>
-              <div className="offer-attributes-values">
-                <div>
-                  <span>Marque</span>
-                  <span></span>
+        <div className="offer-page">
+          <div className="offer-container">
+            <div className="offer-img">
+              <img
+                src={offer.product_image.secure_url}
+                alt={offer.product_name}
+              />
+            </div>
+            <div className="offer-block">
+              <div className="offer-price">{offer.product_price} €</div>
+              <ul className="offer-details">
+                {offer.product_details.map((detail, index) => {
+                  const keys = Object.keys(detail);
+                  return (
+                    <li key={index}>
+                      <span className="offer-details-key">{keys[0]}</span>
+                      <span className="offer-details-value">
+                        {detail[keys[0]]}
+                      </span>
+                    </li>
+                  );
+                })}
+              </ul>
+              <div className="offer-more">
+                <div className="offer-name">{offer.product_name}</div>
+                <div className="offer-info">{offer.product_description}</div>
+                <div className="offer-owner">
+                  {offer.owner.account.username}
                 </div>
-                <div>Taille</div>
               </div>
+              <button>Acheter</button>
             </div>
           </div>
         </div>

@@ -34,7 +34,9 @@ const Login = () => {
   };
 
   return (
-    <div>
+    <div className="login-container">
+      <h2>Se connecter</h2>
+
       <form onSubmit={handleSubmit}>
         <input
           onChange={handleEmail}
@@ -50,6 +52,7 @@ const Login = () => {
         />
         <button type="submit">Se connecter</button>
       </form>
+      <a href="/signup">Pas encore de compte ? Inscris-toi!</a>
     </div>
   );
 };

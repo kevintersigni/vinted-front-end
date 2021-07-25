@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { Link } from "react-router-dom";
 import axios from "axios";
 import Cookies from "js-cookie";
 
@@ -41,35 +42,46 @@ const Signup = () => {
   };
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <input
-          onChange={handleChangeUsername}
-          placeholder="Nom d'utilisateur"
-          id="username"
-          value={username}
-          type="text"
-        />
-        <input
-          onChange={handleChangeEmail}
-          placeholder="Email"
-          id="email"
-          value={email}
-          type="email"
-        />
-        <input
-          onChange={handleChangePassword}
-          placeholder="Mot de passe"
-          id="password"
-          value={password}
-          type="password"
-        />
-        <input id="newsletter" type="checkbox" />
-        <label htmlFor="newsletter">S'inscrire à la newsletter</label>
-        <p className="privacy">Blabbla</p>
-        <button type="submit">S'inscrire</button>
-      </form>
-      <a href="#">Tu as déjà un compte ? Connecte-toi !</a>
+    <div className="signup-page">
+      <div className="signup-container">
+        <h2>S'inscrire</h2>
+        <form onSubmit={handleSubmit}>
+          <input
+            onChange={handleChangeUsername}
+            placeholder="Nom d'utilisateur"
+            id="username"
+            value={username}
+            type="text"
+          />
+          <input
+            onChange={handleChangeEmail}
+            placeholder="Email"
+            id="email"
+            value={email}
+            type="email"
+          />
+          <input
+            onChange={handleChangePassword}
+            placeholder="Mot de passe"
+            id="password"
+            value={password}
+            type="password"
+          />
+          <div className="checkbox-container">
+            <div>
+              <input id="newsletter" type="checkbox" />
+              <label htmlFor="newsletter">S'inscrire à notre newsletter</label>
+            </div>
+            <p className="privacy">
+              En m'inscrivant je confirme avoir lu et accepté les Termes &
+              Conditions et Politique de Confidentialité de Vinted. Je confirme
+              avoir au moins 18 ans.
+            </p>
+          </div>
+          <button type="submit">S'inscrire</button>
+        </form>
+        <a href="/login">Tu as déjà un compte ? Connecte-toi !</a>
+      </div>
     </div>
   );
 };

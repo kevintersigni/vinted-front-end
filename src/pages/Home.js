@@ -1,9 +1,21 @@
-import React from "react";
-import Logo from "../assets/img/logo.png";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 
-const Home = (props) => {
-  const { offers, isLoading } = props;
+const Home = () => {
+  const [offers, setOffers] = useState();
+  const [isLoading, setIsLoading] = useState(true);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      const results = await axios.get(
+        `https://lereacteur-vinted-api.herokuapp.com/offers`
+      );
+      setOffers(results.data.offers);
+      setIsLoading(false);
+    };
+    fetchData();
+  }, []);
 
   return (
     <>
@@ -11,35 +23,68 @@ const Home = (props) => {
         <div>Loading</div>
       ) : (
         <div>
-          <section>
-            <div>
-              <h1>Prêts à faire du tri dans vos placards ?</h1>
+          <section className="hero">
+            <div className="box-home">
+              <div>Prêts à faire du tri dans vos placards ?</div>
               <button>Commencer à vendre</button>
             </div>
           </section>
           <main>
             <div className="grid-offers">
               {offers.map((offer, index) => (
-                <Link to={`/offer/${offer._id}`} key={index}>
+                <Link
+                  className="card-offer"
+                  to={`/offer/${offer._id}`}
+                  key={index}
+                >
                   <div className="offer">
-                    <p>{offer.owner.account.username}</p>
+                    <p className="offer-username">
+                      {offer.owner.account.username}
+                    </p>
                     <img
                       src={offer.product_image.url}
-                      alt={`image de l'offre ${offer._id}`}
+                      alt={`couv de l'offre ${offer._id}`}
                     />
-                    <p>{offer.product_price}</p>
-                    <p>{offer.product_details[1].TAILLE}</p>
-                    <p>{offer.product_details[1].MARQUE}</p>
+                    <div className="offer-detail">
+                      <span className="offer-price">
+                        {offer.product_price} €
+                      </span>
+                      {offer.product_details.map((detail, index) => {
+                        const keys = Object.keys(detail);
+
+                        return (
+                          <>
+                            {keys[0] === "MARQUE" ? (
+                              <span
+                                className="offer-detail-element"
+                                key={index}
+                              >
+                                {detail[keys[0]]}
+                              </span>
+                            ) : (
+                              keys[0] === "TAILLE" && (
+                                <span
+                                  className="offer-detail-element"
+                                  key={index}
+                                >
+                                  {detail[keys[0]]}
+                                </span>
+                              )
+                            )}
+                          </>
+                        );
+                      })}
+
+                      {/* <span className="offer-detail-taille">
+                        {offer.product_details[1].TAILLE}
+                      </span>
+                      <span className="offer-detail-marque">
+                        {offer.product_details[1].MARQUE}
+                      </span> */}
+                    </div>
                   </div>
                 </Link>
               ))}
-              <div className="offer">
-                <p>Michel</p>
-                <img src={Logo} alt="photo de l'offre avec tel id"></img>
-                <p>prix</p>
-                <p>taille</p>
-                <p>marque</p>
-              </div>
             </div>
           </main>
         </div>

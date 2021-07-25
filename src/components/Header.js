@@ -1,23 +1,30 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import Logo from "../assets/img/logo.png";
+import Logo from "../assets/img/logo_minted.png";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 const Header = () => {
+  console.log("token");
   return (
     <header>
       <Link to="/">
-        <div>
-          <img src={Logo} alt="photo de l'offre avec tel id"></img>
-        </div>
+        <img src={Logo} alt="logo"></img>
       </Link>
-      <Link to="/signup">
-        <button>S'inscrire</button>
-      </Link>
-      <Link to="/login">
-        <button>Se connecter</button>
-      </Link>
+      <div className="search-container">
+        <FontAwesomeIcon icon="search" className="search-icon" />
+        <input type="search" placeholder="Rechercher des articles"></input>
+      </div>
 
-      <button>Vends tes articles</button>
+      <div>
+        <Link to="/signup">
+          <button>S'inscrire</button>
+        </Link>
+        <Link to="/login">
+          <button>Se connecter</button>
+        </Link>
+      </div>
+
+      <button className="sales-button">Vends tes articles</button>
     </header>
   );
 };

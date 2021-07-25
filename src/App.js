@@ -1,6 +1,6 @@
 import "./App.css";
-import React, { useEffect, useState } from "react";
-import axios from "axios";
+import React from "react";
+
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 import Header from "./components/Header";
@@ -10,33 +10,22 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faSearch } from "@fortawesome/free-solid-svg-icons";
+library.add(faSearch);
+
 function App() {
-  const [data, setData] = useState({});
-  const [isLoading, setIsLoading] = useState(true);
-
-  useEffect(() => {
-    const fetchData = async () => {
-      const response = await axios.get(
-        "https://lereacteur-vinted-api.herokuapp.com/offers"
-      );
-      setData(response.data);
-      setIsLoading(false);
-      console.log(data.offers);
-    };
-    fetchData();
-  }, []);
-
   return (
     <Router>
       <Header />
 
       <Switch>
         <Route exact path="/">
-          <Home offers={data.offers} isLoading={isLoading} />
+          <Home />
         </Route>
 
         <Route path="/offer/:id">
-          <Offer offers={data.offers} isLoading={isLoading} />
+          <Offer />
         </Route>
 
         <Route path="/signup">
