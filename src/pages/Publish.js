@@ -81,6 +81,7 @@ const Publish = () => {
           },
         }
       );
+      console.log(response.data); // post ISSUE pour éviter console.log
     } catch (error) {
       console.log(error);
     }

@@ -4,7 +4,7 @@ import React, { useState } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-import { useHistory } from "react-router";
+// import { useHistory } from "react-router";
 
 import Header from "./components/Header";
 
@@ -22,7 +22,7 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 function App() {
-  const history = useHistory();
+  // const history = useHistory();
   const [title, setTitle] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || "");
 

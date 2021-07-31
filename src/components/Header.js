@@ -14,21 +14,6 @@ const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 const { Handle } = Slider;
 
-const handle = (props) => {
-  const { value, dragging, index, ...restProps } = props;
-  return (
-    <SliderTooltip
-      prefixCls="rc-slider-tooltip"
-      overlay={`${value}€`}
-      visible={dragging}
-      placement="top"
-      key={index}
-    >
-      <Handle value={value} {...restProps} />
-    </SliderTooltip>
-  );
-};
-
 const Header = (props) => {
   const {
     token,
@@ -38,10 +23,24 @@ const Header = (props) => {
     range,
     sort,
     handleSort,
+    value,
+    dragging,
+    index,
+    ...restProps
   } = props;
 
   return (
     <header>
+      <SliderTooltip
+        prefixCls="rc-slider-tooltip"
+        overlay={`${value}€`}
+        visible={dragging}
+        placement="top"
+        key={index}
+      >
+        <Handle value={value} {...restProps} />
+      </SliderTooltip>
+
       <Link to="/">
         <img src={Logo} alt="logo"></img>
       </Link>
