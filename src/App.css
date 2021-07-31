@@ -28,7 +28,7 @@ input:focus {
 
 header {
   width: 1280px;
-  height: 80px;
+  height: 130px;
   display: flex;
   margin: 0 auto;
   align-items: center;
@@ -36,7 +36,7 @@ header {
 }
 
 header img {
-  width: 100px;
+  width: 120px;
 }
 
 header .search-container {
@@ -79,6 +79,58 @@ header button {
 header button.sales-button {
   background-color: var(--minted-color);
   color: white;
+}
+
+.filters {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  height: 70px;
+}
+
+.filter-container {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 10px;
+}
+.sort-container {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.sort-label {
+  font-size: 12px;
+  margin-right: 20px;
+}
+.react-toggle--checked,
+.react-toggle-thumb {
+  border-color: var(--minted-color) !important;
+}
+
+.react-toggle-track {
+  background-color: var(--minted-color) !important;
+}
+
+.range-container {
+  display: flex;
+  width: 400px;
+  align-items: center;
+}
+.range-price-label {
+  width: 100px;
+  font-size: 12px;
+}
+.rc-slider-track-1 {
+  background-color: var(--minted-color) !important;
+}
+
+.rc-slider-handle {
+  border-color: var(--minted-color) !important;
+}
+
+.rc-slider-handle:active {
+  box-shadow: 0 0 5px var(--minted-color) !important;
 }
 
 .hero {
@@ -166,7 +218,7 @@ header button.sales-button {
 
 .signup-container input,
 .login-container input {
-  color: lightgray;
+  color: #000;
   border: none;
   margin-bottom: 20px;
   border-bottom: 1px solid #fcced3;
@@ -202,7 +254,8 @@ header button.sales-button {
 
 .signup-container button,
 .login-container button,
-.offer-page button {
+.offer-page button,
+.publish-page button {
   font-size: 16px;
   border: none;
   color: white;
@@ -294,4 +347,62 @@ header button.sales-button {
   font-weight: 600;
   font-size: 16px;
   margin-bottom: 20px;
+}
+
+.publish-page {
+  background-color: #eaedee;
+
+  padding: 20px 0;
+}
+
+.publish-container {
+  width: 1280px;
+  margin: 0 auto;
+}
+
+.publish-container input {
+  width: 50%;
+  border: none;
+  border-bottom: solid 1px #eaedee;
+}
+
+.publish-container input::placeholder {
+  color: lightgray;
+}
+.publish-product-file-upload,
+.publish-product-info,
+.publish-product-details,
+.publish-product-sale {
+  border: solid 1px lightgrey;
+  background-color: #fff;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px 20px;
+  margin-bottom: 20px;
+}
+
+.publish-product-title,
+.publish-product-description,
+.publish-product-brand,
+.publish-product-size,
+.publish-product-color,
+.publish-product-condition,
+.publish-product-city,
+.publish-product-price {
+  padding: 20px 10px;
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.publish-product-swap {
+  width: 50%;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.publish-button {
+  display: flex;
+  justify-content: flex-end;
 }

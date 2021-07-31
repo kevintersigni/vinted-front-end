@@ -1,8 +1,11 @@
 import React, { useState } from "react";
+import { useHistory } from "react-router";
 import axios from "axios";
-import Cookies from "js-cookie";
 
-const Login = () => {
+const Login = (props) => {
+  const { handleLogin } = props;
+
+  const history = useHistory();
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
 
@@ -16,21 +19,23 @@ const Login = () => {
     setPassword(value);
   };
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    const checkUser = async () => {
-      const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/login",
-        {
-          email: email,
-          password: password,
-        }
-      );
-      console.log(response);
-      const token = response.data.token;
-      Cookies.set("token", token);
-    };
-    checkUser();
+
+    const response = await axios.post(
+      "https://lereacteur-vinted-api.herokuapp.com/user/login",
+      {
+        email: email,
+        password: password,
+      }
+    );
+
+    if (response.data.token) {
+      handleLogin(response.data.token);
+      return history.push("/publish");
+    } else {
+      alert("Une erreur est survenue, veuillez rééessayer.");
+    }
   };
 
   return (
