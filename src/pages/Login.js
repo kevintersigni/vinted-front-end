@@ -29,7 +29,7 @@ const Login = (props) => {
         password: password,
       }
     );
-
+    console.log(response.data.token);
     if (response.data.token) {
       handleLogin(response.data.token);
       return history.push("/publish");

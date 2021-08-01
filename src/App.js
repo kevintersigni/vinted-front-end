@@ -4,8 +4,6 @@ import React, { useState } from "react";
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
-// import { useHistory } from "react-router";
-
 import Header from "./components/Header";
 
 import Offer from "./pages/Offer";
@@ -22,7 +20,6 @@ import { faSearch } from "@fortawesome/free-solid-svg-icons";
 library.add(faSearch);
 
 function App() {
-  // const history = useHistory();
   const [title, setTitle] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || "");
 
@@ -34,11 +31,6 @@ function App() {
     setToken(token);
   };
 
-  const handleLogout = () => {
-    Cookies.remove("token");
-    setToken("");
-    // return history.push("/login"); POSTER ISSUE
-  };
   const handleChange = (event) => {
     const value = event.target.value;
     setTitle(value);
@@ -57,17 +49,17 @@ function App() {
     <Router>
       <Header
         token={token}
-        handleLogout={handleLogout}
         handleChange={handleChange}
         range={range}
         handleRange={handleRange}
         sort={sort}
         handleSort={handleSort}
+        setToken={setToken}
       />
 
       <Switch>
         <Route exact path="/">
-          <Home title={title} range={range} />
+          <Home title={title} range={range} sort={sort} />
         </Route>
 
         <Route path="/offer/:id">
@@ -83,7 +75,7 @@ function App() {
         </Route>
 
         <Route path="/publish">
-          <Publish />
+          <Publish token={token} />
         </Route>
       </Switch>
     </Router>

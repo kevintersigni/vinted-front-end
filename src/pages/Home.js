@@ -35,7 +35,9 @@ const Home = (props) => {
           <section className="hero">
             <div className="box-home">
               <div>Prêts à faire du tri dans vos placards ?</div>
-              <button>Commencer à vendre</button>
+              <Link to="/publish">
+                <button>Commencer à vendre</button>
+              </Link>
             </div>
           </section>
           <main>

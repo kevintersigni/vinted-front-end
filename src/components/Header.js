@@ -1,6 +1,6 @@
 import React from "react";
 
-import { Link } from "react-router-dom";
+import { Link, useHistory } from "react-router-dom";
 import Logo from "../assets/img/logo_minted.png";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
@@ -9,15 +9,18 @@ import "rc-tooltip/assets/bootstrap.css";
 import Slider, { SliderTooltip } from "rc-slider";
 
 import Toggle from "react-toggle";
+import Cookies from "js-cookie";
 
 const { createSliderWithTooltip } = Slider;
 const Range = createSliderWithTooltip(Slider.Range);
 const { Handle } = Slider;
 
 const Header = (props) => {
+  const history = useHistory();
+
   const {
     token,
-    handleLogout,
+    setToken,
     handleChange,
     handleRange,
     range,
@@ -28,6 +31,12 @@ const Header = (props) => {
     index,
     ...restProps
   } = props;
+
+  const handleLogout = () => {
+    Cookies.remove("token");
+    setToken("");
+    history.push("/login");
+  };
 
   return (
     <header>

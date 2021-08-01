@@ -1,10 +1,11 @@
 import axios from "axios";
-import Cookies from "js-cookie";
+
+import { Redirect } from "react-router-dom";
 import React, { useState } from "react";
 import Dropzone from "react-dropzone";
 
-const Publish = () => {
-  const token = Cookies.get("token");
+const Publish = (props) => {
+  const { token } = props;
 
   const [file, setFile] = useState();
   const [preview, setPreview] = useState("");
@@ -87,7 +88,7 @@ const Publish = () => {
     }
   };
 
-  return (
+  return token ? (
     <div className="publish-page">
       <div className="publish-container">
         <h2>Vends ton article</h2>
@@ -215,6 +216,8 @@ const Publish = () => {
         </form>
       </div>
     </div>
+  ) : (
+    <Redirect to="/login/" />
   );
 };
 
