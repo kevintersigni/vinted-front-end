@@ -18,14 +18,14 @@ const Home = (props) => {
         sort: sort ? "price-asc" : "price-desc",
       });
       const results = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offers?${queryParams}`
+        `https://my-backend-project-vinted.herokuapp.com/offers?${queryParams}`
       );
       setOffers(results.data.offers);
       setIsLoading(false);
     };
     fetchData();
   }, [title, range, sort]);
-
+  console.log(offers);
   return (
     <>
       {isLoading ? (
@@ -53,7 +53,7 @@ const Home = (props) => {
                       {offer.owner.account.username}
                     </p>
                     <img
-                      src={offer.product_image.url}
+                      src={offer.product_image[0].secure_url}
                       alt={`couv de l'offre ${offer._id}`}
                     />
                     <div className="offer-detail">

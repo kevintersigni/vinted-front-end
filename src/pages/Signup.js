@@ -26,7 +26,7 @@ const Signup = () => {
 
     const checkUser = async () => {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/user/signup",
+        "https://my-backend-project-vinted.herokuapp.com/user/signup",
         {
           email: email,
           password: password,

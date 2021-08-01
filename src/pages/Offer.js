@@ -11,13 +11,15 @@ const Offer = () => {
   useEffect(() => {
     const fetchData = async () => {
       const results = await axios.get(
-        `https://lereacteur-vinted-api.herokuapp.com/offer/${id}`
+        `https://my-backend-project-vinted.herokuapp.com/offer/${id}`
       );
+
       setOffer(results.data);
       setIsLoading(false);
     };
     fetchData();
   }, [id]);
+  console.log(offer);
 
   return (
     <div>
@@ -28,7 +30,7 @@ const Offer = () => {
           <div className="offer-container">
             <div className="offer-img">
               <img
-                src={offer.product_image.secure_url}
+                src={offer.product_image[0].secure_url}
                 alt={offer.product_name}
               />
             </div>

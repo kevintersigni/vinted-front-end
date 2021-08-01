@@ -23,7 +23,7 @@ const Login = (props) => {
     event.preventDefault();
 
     const response = await axios.post(
-      "https://lereacteur-vinted-api.herokuapp.com/user/login",
+      "https://my-backend-project-vinted.herokuapp.com/user/login",
       {
         email: email,
         password: password,

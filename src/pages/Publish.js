@@ -73,7 +73,7 @@ const Publish = (props) => {
 
     try {
       const response = await axios.post(
-        "https://lereacteur-vinted-api.herokuapp.com/offer/publish",
+        "https://my-backend-project-vinted.herokuapp.com/offer/publish",
         formData,
         {
           headers: {
