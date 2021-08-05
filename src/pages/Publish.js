@@ -82,7 +82,7 @@ const Publish = (props) => {
           },
         }
       );
-      console.log(response.data); // post ISSUE pour éviter console.log
+      console.log(response.data); // post ISSUE pour éviter console.log --> FAIRE MODAL CONFIRMATION PUBLICATION AVEC RENVOI SUR L'ANNONCE
     } catch (error) {
       console.log(error);
     }

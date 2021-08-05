@@ -11,19 +11,21 @@ import Home from "./pages/Home";
 import Signup from "./pages/Signup";
 import Login from "./pages/Login";
 import Publish from "./pages/Publish";
+import Payment from "./pages/Payment";
 
 import Cookies from "js-cookie";
 
 import { library } from "@fortawesome/fontawesome-svg-core";
 import { faSearch } from "@fortawesome/free-solid-svg-icons";
+import { faCheckCircle } from "@fortawesome/free-solid-svg-icons";
 
-library.add(faSearch);
+library.add(faSearch, faCheckCircle);
 
 function App() {
   const [title, setTitle] = useState("");
   const [token, setToken] = useState(Cookies.get("token") || "");
 
-  const [range, setRange] = useState([0, 50]);
+  const [range, setRange] = useState([0, 200]);
   const [sort, setSort] = useState(false);
 
   const handleLogin = (token) => {
@@ -76,6 +78,10 @@ function App() {
 
         <Route path="/publish">
           <Publish token={token} />
+        </Route>
+
+        <Route path="/payment">
+          <Payment token={token} />
         </Route>
       </Switch>
     </Router>
