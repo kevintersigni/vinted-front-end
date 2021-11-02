@@ -1,70 +1,55 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Minted
 
-## Available Scripts
+Ce projet est un clone du site Vinted réalisé pendant ma formation au [Reacteur](https://www.lereacteur.io/).
 
-In the project directory, you can run:
+Un serveur nous était fourni mais nous pouvions réaliser notre propre backend pour effectuer nos requêtes et gérer notre base de données (je partagerai bientôt le repo de mon back).
 
-### `yarn start`
+## Demo
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+Lien du projet : <a href="https://minted.netlify.app/" target="_blank">Minted</a>
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+![Screen Minted](https://user-images.githubusercontent.com/81259152/139872358-5ae18622-e991-405a-a239-f0fcdb6d9e43.png)
 
-### `yarn test`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+## Features
 
-### `yarn build`
+- Search bar
+- Filters & sort
+- Router
+- Login / Signup
+- Dropzone pour upload d'image
+- Paiement via Stripe
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+## Skills & packages
+React, Node, Express, MongoDB Atlas, Javascript, HTML, CSS.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+React router, axios, Cors, Mongoose, Stripe
 
-### `yarn eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
+## Installation
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+Install my-project with yarn 👇🏼
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
+#### Clone this repository:
 
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
+`git clone https://github.com/kevintersigni/vinted-front-end.git`
 
-## Learn More
+#### Install packages:
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+`yarn install`
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+#### When installation is complete, launch the project:
 
-### Code Splitting
+`yarn start`
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## Roadmap
 
-### Analyzing the Bundle Size
+Pour améliorer ce projet voici ce que je prévois :
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+- modale pour le login/signup (en cours)
+- responsive
+- pagination
+- amélioration dropzone avec images multiples
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `yarn build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
